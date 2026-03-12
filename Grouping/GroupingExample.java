@@ -3,7 +3,7 @@ Group students by marks using:
 Collectors.groupingBy()
 Example:
 Marks 80 → students list
-Marks 90 → students list */\
+Marks 90 → students list */
 
 package Grouping;
 
@@ -44,4 +44,5 @@ public class GroupingExample {
             );
         });
     }
+
 }
