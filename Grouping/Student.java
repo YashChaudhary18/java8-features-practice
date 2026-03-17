@@ -1,3 +1,4 @@
+/* Student class for GroupingExample. */
 package Grouping;
 
 public class Student {
