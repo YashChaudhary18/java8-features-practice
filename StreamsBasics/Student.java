@@ -1,3 +1,4 @@
+/* Student class for StudentStreamExample. */
 package StreamsBasics;
 
 
