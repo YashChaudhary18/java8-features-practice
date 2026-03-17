@@ -1,3 +1,4 @@
+/* Employee class for StreamSortingExample. */
 package StreamSorting;
 
 // Employee class
