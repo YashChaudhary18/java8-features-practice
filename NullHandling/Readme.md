@@ -1,28 +1,30 @@
-Java 8 Optional & Null Handling
+Java 8 Optional (Separate Classes)
 
 Overview :
 
-This program demonstrates how to safely handle null values using the Optional class in Java 8.
-
-Optional helps avoid NullPointerException when an object may be null.
+This program demonstrates safe null handling using Java 8 Optional.
 
 ---
 
-Steps :
+Files :
 
-1. Create a Student class with attributes id, name, and marks.
-2. Create a Student object that may be null.
-3. Wrap the object using "Optional.ofNullable()".
-4. Check if the value exists using "isPresent()".
-5. If the object exists, display student information.
-6. If the object is null, print a message.
+Student.java → Model class
+StudentService.java → Business logic
+OptionalExample.java → Main program
+
+---
+
+Features :
+
+- Handle null safely using Optional
+- Use ifPresent() to avoid null checks
+- Use orElse() for default values
+- Use orElseThrow() for error handling
 
 ---
 
 Concepts Used :
 
 - Java 8 Optional
-- Null Handling
-- "Optional.ofNullable()"
-- "isPresent()"
-- "ifPresent()"
+- Null handling
+- Functional programming
