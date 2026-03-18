@@ -26,28 +26,28 @@ public class StreamSortingExample {
         System.out.println("All Employees:");
         employees.forEach(e -> e.display());
 
-        // 🔹 Sort by salary ascending
+        //  Sort by salary ascending
         System.out.println("\nSorted by Salary (Ascending):");
 
         employees.stream()
                 .sorted(Comparator.comparingDouble(e -> e.salary))
                 .forEach(e -> e.display());
 
-        // 🔹 Sort by salary descending
+        //  Sort by salary descending
         System.out.println("\nSorted by Salary (Descending):");
 
         employees.stream()
                 .sorted(Comparator.comparingDouble((Employee e) -> e.salary).reversed())
                 .forEach(e -> e.display());
 
-        // 🔹 Remove duplicate employees (based on name + salary)
+        //  Remove duplicate employees (based on name + salary)
         System.out.println("\nDistinct Employees:");
 
         employees.stream()
                 .filter(distinctByKey(e -> e.name + e.salary))
                 .forEach(e -> e.display());
 
-        // 🔹 Top 3 highest paid employees
+        //  Top 3 highest paid employees
         System.out.println("\nTop 3 Highest Paid Employees:");
 
         employees.stream()
@@ -55,7 +55,7 @@ public class StreamSortingExample {
                 .limit(3)
                 .forEach(e -> e.display());
 
-        // 🔹 Count employees with salary > 60000
+        //  Count employees with salary > 60000
         long count = employees.stream()
                 .filter(e -> e.salary > 60000)
                 .count();
