@@ -1,37 +1,24 @@
-Java 8 Stream Grouping Example
+Java 8 Stream Grouping (Separate Classes)
 
 Overview :
 
-This program demonstrates how to group students by marks using Java 8 Streams and "Collectors.groupingBy()".
-
-Students with the same marks are grouped together.
-
-Example:
-
-Marks 80 → [Rahul, Priya]
-Marks 90 → [Aman, Neha]
+This program demonstrates grouping students by marks using Java 8 Streams.
 
 ---
 
-Steps :
+Files :
 
-1. Create a "Student" class with attributes:
+Student.java → Model class
+StudentService.java → Business logic
+GroupingExample.java → Main program
 
-   - id
-   - name
-   - marks
+---
 
-2. Create a "List<Student>" and add student objects.
+Features :
 
-3. Display all students.
-
-4. Convert the list into a stream using "stream()".
-
-5. Use "Collectors.groupingBy()" to group students based on marks.
-
-6. Store the result in a "Map<Integer, List<Student>>".
-
-7. Display the grouped students.
+- Group students by marks
+- Display grouped data
+- Count students in each group
 
 ---
 
@@ -39,5 +26,5 @@ Concepts Used :
 
 - Java 8 Streams
 - Collectors.groupingBy()
-- Lambda expressions
-- Map and List collections
+- Map and List
+- Method references
