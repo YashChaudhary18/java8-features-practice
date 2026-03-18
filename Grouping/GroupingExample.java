@@ -8,41 +8,45 @@ Marks 90 → students list */
 package Grouping;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class GroupingExample {
 
     public static void main(String[] args) {
 
         // Create student list
-        List<Student> students = new ArrayList<>();
+        List<Student> students = Arrays.asList(
+                new Student(1, "Rahul", 80),
+                new Student(2, "Aman", 90),
+                new Student(3, "Priya", 80),
+                new Student(4, "Neha", 90),
+                new Student(5, "Arjun", 70)
+        );
 
-        students.add(new Student(1, "Rahul", 80));
-        students.add(new Student(2, "Aman", 90));
-        students.add(new Student(3, "Priya", 80));
-        students.add(new Student(4, "Neha", 90));
-        students.add(new Student(5, "Arjun", 70));
-
-        // Display all students
+        // 1. Print all students
         System.out.println("All Students:");
-        students.forEach(s -> s.display());
+        students.forEach(Student::display);
 
-        // Group students by marks
+        // 2. Group students by marks
         Map<Integer, List<Student>> grouped =
-                students.stream()
-                        .collect(Collectors.groupingBy(s -> s.marks));
+                StudentService.groupByMarks(students);
 
-        // Display grouped result
-        System.out.println("\nStudents grouped by marks:");
+        // 3. Display grouped result
+        System.out.println("\nGrouped Students:");
 
-        grouped.forEach((marks, studentList) -> {
+        grouped.forEach((marks, list) -> {
 
-            System.out.println("Marks " + marks + " →");
+            System.out.println("Marks " + marks + ":");
 
-            studentList.forEach(s -> 
-                System.out.println("   " + s.name)
-            );
+            list.forEach(Student::display);
         });
-    }
 
+        //  Extra Improvements
+
+        // Count students per marks
+        System.out.println("\nCount by Marks:");
+
+        grouped.forEach((marks, list) ->
+                System.out.println("Marks " + marks + " → " + list.size())
+        );
+    }
 }
