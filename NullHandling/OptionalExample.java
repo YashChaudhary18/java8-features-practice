@@ -10,40 +10,37 @@ import java.util.Optional;
 
 public class OptionalExample {
 
-    // Simple Student class inside same file
-    static class Student {
-
-        int id;
-        String name;
-        int marks;
-
-        Student(int id, String name, int marks) {
-            this.id = id;
-            this.name = name;
-            this.marks = marks;
-        }
-
-        void display() {
-            System.out.println("ID: " + id + " Name: " + name + " Marks: " + marks);
-        }
-    }
-
     public static void main(String[] args) {
 
-        // Student object may be null
-        Student student = null;
+        // Case 1: Student exists
+        Optional<Student> student1 = StudentService.getStudent(true);
 
-        // Wrap object using Optional
-        Optional<Student> optionalStudent = Optional.ofNullable(student);
+        System.out.println("Case 1:");
 
-        // Check safely
-        if (optionalStudent.isPresent()) {
-            optionalStudent.get().display();
-        } else {
-            System.out.println("Student object is null");
+        student1.ifPresent(Student::display);
+
+        // Case 2: Student is null
+        Optional<Student> student2 = StudentService.getStudent(false);
+
+        System.out.println("\nCase 2:");
+
+        Student result = student2.orElse(
+                new Student(0, "Default Student", 0)
+        );
+
+        result.display();
+
+        //  Advanced Usage
+
+        // orElseThrow example
+        try {
+            Student s = student2.orElseThrow(() ->
+                    new RuntimeException("Student not found"));
+
+            s.display();
+
+        } catch (Exception e) {
+            System.out.println("\nException: " + e.getMessage());
         }
-
-        // Another safe method
-        optionalStudent.ifPresent(s -> s.display());
     }
 }
