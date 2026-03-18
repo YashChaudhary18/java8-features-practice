@@ -8,24 +8,48 @@ Example:
 → [4,6,4] */
 
 package MapOperation;
-
 import java.util.*;
-import java.util.stream.*;
 
 public class MapOperationExample {
 
     public static void main(String[] args) {
 
         // Create list of names
-        List<String> names = Arrays.asList("Java", "Spring", "Boot");
+        List<String> names = Arrays.asList(
+                "Java", "Spring", "Boot", "Java", "API"
+        );
 
-        // Convert names to lengths using map()
-        List<Integer> lengths = names.stream()
-                                     .map(name -> name.length())
-                                     .collect(Collectors.toList());
+        // 1. Print original list
+        System.out.println("Original Names:");
+        names.forEach(System.out::println);
 
-        // Display results
-        System.out.println("Names List: " + names);
-        System.out.println("Lengths List: " + lengths);
+        // 2. Convert names to lengths
+        List<Integer> lengths = NameProcessor.getNameLengths(names);
+
+        System.out.println("\nName Lengths:");
+        lengths.forEach(System.out::println);
+
+        //  Extra Improvements
+
+        // 3. Distinct names
+        System.out.println("\nDistinct Names:");
+
+        names.stream()
+                .distinct()
+                .forEach(System.out::println);
+
+        // 4. Sorted names
+        System.out.println("\nSorted Names:");
+
+        names.stream()
+                .sorted()
+                .forEach(System.out::println);
+
+        // 5. Count names starting with 'J'
+        long count = names.stream()
+                .filter(name -> name.startsWith("J"))
+                .count();
+
+        System.out.println("\nNames starting with 'J': " + count);
     }
 }
